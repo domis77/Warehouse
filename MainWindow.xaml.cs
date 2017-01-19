@@ -74,8 +74,8 @@ namespace Magazyn
             }
 
             warehouse.addProduct(name, description, price);
-            warehouse.showProducts(addressBook_listView);
-            addressBook_listView.Items.Refresh();
+            warehouse.showProducts(warehouse_listView);
+            warehouse_listView.Items.Refresh();
 
             name_textBox.Text = "";
             description_textBox.Text = "";
@@ -86,10 +86,10 @@ namespace Magazyn
 
         private void deleteProduct_button_Click(object sender, RoutedEventArgs e)
         {
-            Warehouse.Product selectedProduct = (Warehouse.Product)addressBook_listView.SelectedItem;
+            Warehouse.Product selectedProduct = (Warehouse.Product)warehouse_listView.SelectedItem;
             
             warehouse.deleteProduct(selectedProduct);
-            addressBook_listView.Items.Refresh();
+            warehouse_listView.Items.Refresh();
         }
 
         private void saveToFile_button_Click(object sender, RoutedEventArgs e)
