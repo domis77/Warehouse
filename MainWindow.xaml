@@ -6,22 +6,34 @@
         xmlns:local="clr-namespace:Magazyn"
         xmlns:Warehouse="clr-namespace:Magazyn.Warehouse" x:Class="Magazyn.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600">
+        Title="MainWindow" Height="650" Width="1000">
     <Grid>
 
-        <ListView x:Name="addressBook_listView" HorizontalAlignment="Left" Height="321" Margin="10,239,0,0" VerticalAlignment="Top" Width="572" BorderThickness="1" IsSynchronizedWithCurrentItem="True" VerticalContentAlignment="Center" SelectionMode="Single">
+        <ListView x:Name="warehouse_listView" HorizontalAlignment="Left" Height="214" Margin="10,396,0,0" VerticalAlignment="Top" Width="972" BorderThickness="1" IsSynchronizedWithCurrentItem="True" VerticalContentAlignment="Center" SelectionMode="Single">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding id}" Width="50"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}" Width="115"/>
-                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding description}" Width="285"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding price}" Width="110"/>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding id}" Width="40"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}" Width="100"/>
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding description}" Width="195"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding price}" Width="80"/>
+
+                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding category.category}" Width="140"/>
+                    <GridViewColumn Header="Receiver" DisplayMemberBinding="{Binding receiver.receiver}" Width="140"/>
+                    <GridViewColumn Header="Received" Width="62">
+                        <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding received}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    <GridViewColumn Header="Receiver limit" DisplayMemberBinding="{Binding receiverLimit}" Width="205"/>
+
                 </GridView>
             </ListView.View>
         </ListView>
 
         <Label x:Name="name_label" Content="Name" HorizontalAlignment="Left" Height="37" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
-        <TextBox x:Name="name_textBox" HorizontalAlignment="Left" Height="37" Margin="165,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
+        <TextBox x:Name="name_textBox" HorizontalAlignment="Left" Height="37" Margin="165,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
 
         <Label x:Name="description_label" Content="Description" HorizontalAlignment="Left" Height="90" Margin="10,71,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
         <TextBox x:Name="description_textBox" HorizontalAlignment="Left" Height="90" Margin="165,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
@@ -29,11 +41,66 @@
         <Label x:Name="price_label" Content="Price" HorizontalAlignment="Left" Height="37" Margin="10,180,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
         <TextBox x:Name="price_textBox" HorizontalAlignment="Left" Height="37" Margin="165,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
 
-        
+
+        <Label x:Name="reciveLimit_label" Content="Receive limit" HorizontalAlignment="Left" Height="36" Margin="10,226,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
+        <TextBox x:Name="reciveLimit_textBox" HorizontalAlignment="Left" Height="36" Margin="165,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
+        <Label x:Name="days_label" Content="Days" HorizontalAlignment="Left" Height="26" Margin="296,237,0,0" VerticalAlignment="Top" Width="63" FontSize="18" FontFamily="Myriad Pro" VerticalContentAlignment="Bottom"/>
+
+
+
         <Button x:Name="saveToFile_button" Content="Save to file" HorizontalAlignment="Left" Height="37" Margin="380,10,0,0" VerticalAlignment="Top" Width="190" FontFamily="Perpetua Titling MT" FontSize="14" Background="#FFB8B8B8" FontWeight="Bold" Click="saveToFile_button_Click" Focusable="False"/>
-        
-        <Button x:Name="deleteProduct_button" Content="Delete Product" HorizontalAlignment="Left" Height="56" Margin="380,71,0,0" VerticalAlignment="Top" Width="190" FontFamily="Perpetua Titling MT" FontSize="14" Background="#FFB8B8B8" FontWeight="Bold" Focusable="False" Foreground="#FFA82323" Click="deleteProduct_button_Click"/>
-        <Button x:Name="addProduct_button" Content="Add Product" HorizontalAlignment="Left" Height="78" Margin="380,139,0,0" VerticalAlignment="Top" Width="190" FontFamily="Perpetua Titling MT" FontSize="14" Background="#FFB8B8B8" FontWeight="Bold" Click="addProduct_button_Click" Focusable="False" Foreground="#FF186C10"/>
+
+        <Button x:Name="deleteProduct_button" Content="Delete Product" HorizontalAlignment="Left" Height="59" Margin="380,102,0,0" VerticalAlignment="Top" Width="190" FontFamily="Perpetua Titling MT" FontSize="14" Background="#FFB8B8B8" FontWeight="Bold" Focusable="False" Foreground="#FFA82323" Click="deleteProduct_button_Click"/>
+        <Button x:Name="addProduct_button" Content="Add Product" HorizontalAlignment="Left" Height="82" Margin="380,180,0,0" VerticalAlignment="Top" Width="190" FontFamily="Perpetua Titling MT" FontSize="14" Background="#FFB8B8B8" FontWeight="Bold" Click="addProduct_button_Click" Focusable="False" Foreground="#FF186C10"/>
+
+
+        <Label x:Name="reciverList_label" Content="Recivers" HorizontalAlignment="Left" Height="27" Margin="603,13,0,0" VerticalAlignment="Top" Width="379" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontFamily="Tekton Pro" Background="#FFC5C5C5" BorderBrush="Black"/>
+        <ListView x:Name="receiverList_listView" HorizontalAlignment="Left" Height="116" Margin="601,45,0,0" VerticalAlignment="Top" Width="203" BorderBrush="Black">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding id}"/>
+                    <GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding receiver}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Label x:Name="label" Content="Name:" HorizontalAlignment="Left" Height="30" Margin="809,47,0,0" VerticalAlignment="Top" Width="60" FontFamily="Tekton Pro" FontSize="18" Background="#FFBBBABA"/>
+        <TextBox x:Name="addReceiverName_textBox" HorizontalAlignment="Left" Height="32" Margin="874,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
+        <Button x:Name="addReceiver_button" Content="Add Receiver" HorizontalAlignment="Left" Height="45" Margin="809,82,0,0" VerticalAlignment="Top" Width="173" FontFamily="Perpetua Titling MT" Background="#FF199114" FontWeight="Bold" Focusable="False" Click="addReceiver_button_Click"/>
+
+        <Label x:Name="label_Copy" Content="New name:" HorizontalAlignment="Left" Height="30" Margin="603,168,0,0" VerticalAlignment="Top" Width="88" FontFamily="Tekton Pro" FontSize="18" Background="#FFBBBABA"/>
+        <TextBox x:Name="editReceiverName_textBox" HorizontalAlignment="Left" Height="32" Margin="696,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
+        <Button x:Name="deleteReceiver_button" Content="Delete receiver" HorizontalAlignment="Left" Height="29" Margin="809,132,0,0" VerticalAlignment="Top" Width="173" FontWeight="Bold" FontFamily="Perpetua Titling MT" Background="#FFC93838" Focusable="False" Click="deleteReceiver_button_Click"/>
+        <Button x:Name="editReceiver_button" Content="Edit Receiver" HorizontalAlignment="Left" Height="32" Margin="809,166,0,0" VerticalAlignment="Top" Width="173" FontFamily="Perpetua Titling MT" Background="#FF97900A" FontWeight="Bold" Focusable="False" Click="editReceiver_button_Click"/>
+
+
+
+
+
+        <Label x:Name="CategoryList_label" Content="Category" HorizontalAlignment="Left" Height="27" Margin="603,203,0,0" VerticalAlignment="Top" Width="379" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="19" FontFamily="Tekton Pro" Background="#FFC5C5C5" BorderBrush="Black"/>
+        <ListView x:Name="categoryList_listView" HorizontalAlignment="Left" Height="116" Margin="601,235,0,0" VerticalAlignment="Top" Width="203" BorderBrush="Black">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding id}"/>
+                    <GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding category}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="label_Copy1" Content="Name:" HorizontalAlignment="Left" Height="30" Margin="809,237,0,0" VerticalAlignment="Top" Width="60" FontFamily="Tekton Pro" FontSize="18" Background="#FFBBBABA"/>
+        <TextBox x:Name="addCategoryName_textBox" HorizontalAlignment="Left" Height="32" Margin="874,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
+        <Button x:Name="addCategory_button" Content="Add Category" HorizontalAlignment="Left" Height="45" Margin="809,272,0,0" VerticalAlignment="Top" Width="173" FontFamily="Perpetua Titling MT" Background="#FF199114" FontWeight="Bold" Focusable="False" Click="addCategory_button_Click"/>
+        <Label x:Name="label_Copy2" Content="New name:" HorizontalAlignment="Left" Height="30" Margin="603,358,0,0" VerticalAlignment="Top" Width="88" FontFamily="Tekton Pro" FontSize="18" Background="#FFBBBABA"/>
+        <TextBox x:Name="editCategoryName_textBox" HorizontalAlignment="Left" Height="32" Margin="696,356,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
+        <Button x:Name="deleteCategory_button" Content="Delete category" HorizontalAlignment="Left" Height="29" Margin="809,322,0,0" VerticalAlignment="Top" Width="173" FontWeight="Bold" FontFamily="Perpetua Titling MT" Background="#FFC93838" Focusable="False" Click="deleteCategory_button_Click"/>
+        <Button x:Name="editCategory_button" Content="Edit Category" HorizontalAlignment="Left" Height="32" Margin="809,356,0,0" VerticalAlignment="Top" Width="173" FontFamily="Perpetua Titling MT" Background="#FF97900A" FontWeight="Bold" Focusable="False" Click="editCategory_button_Click"/>
+
+        <Label x:Name="name_label_Copy" Content="Name" HorizontalAlignment="Left" Height="65" Margin="10,322,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
+        <TextBox x:Name="findName_textBox" HorizontalAlignment="Left" Height="65" Margin="165,322,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
+        <Button x:Name="find_button" Content="FIND" HorizontalAlignment="Left" Height="37" Margin="369,322,0,0" VerticalAlignment="Top" Width="201" FontFamily="Perpetua Titling MT" FontSize="14" Background="#FFB8B8B8" FontWeight="Bold" Focusable="False" Click="find_button_Click"/>
+        <Button x:Name="restore_button" Content="Restore" HorizontalAlignment="Left" Height="27" Margin="369,364,0,0" VerticalAlignment="Top" Width="201" FontFamily="Perpetua Titling MT" FontSize="14" Background="#FFB8B8B8" FontWeight="Bold" Focusable="False" Click="restore_button_Click"/>
+
+
+
 
 
 
