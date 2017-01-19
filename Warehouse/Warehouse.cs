@@ -26,9 +26,9 @@ namespace Magazyn.Warehouse
             productList.Remove(selectedProduct);
         }
 
-        public void showProducts(ListView addressBook_listView)
+        public void showProducts(ListView warehouse_listView)
         {
-            addressBook_listView.ItemsSource = productList; 
+            warehouse_listView.ItemsSource = productList; 
         }
 
         public void saveToFile(string filePatch)
