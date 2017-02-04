@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
+using Magazyn.Tools;
 
 namespace Magazyn
 {
@@ -30,11 +31,16 @@ namespace Magazyn
         {
             InitializeComponent();
 
+
             warehouse = new Warehouse.Warehouse();
+
+            DatabaseConnection.CheckIfTableExist();            
+            warehouse.getProductFromDatabase();
+            warehouse.showProducts(warehouse_listView);
+            
 
             receiverList_listView.ItemsSource = receiverList;
             categoryList_listView.ItemsSource = categoryList;
-            
         }
 
 
@@ -49,7 +55,7 @@ namespace Magazyn
             Warehouse.Reciver selectedReceiver = (Warehouse.Reciver)receiverList_listView.SelectedItem;
             if (selectedReceiver == null)
             {
-                System.Windows.MessageBox.Show("Select reciver!");
+                System.Windows.MessageBox.Show("Select receiver!");
                 return;
             }
 
@@ -172,12 +178,22 @@ namespace Magazyn
                 warehouse_listView.Items.Refresh();
                 findName_textBox.Text = "";
             }
+            findName_textBox.Text = "";
         }
 
         private void restore_button_Click(object sender, RoutedEventArgs e)
         {
             warehouse.showProducts(warehouse_listView);
             warehouse_listView.Items.Refresh();
+            findName_textBox.Text = "";
+        }
+
+        private void received_change(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.CheckBox receivedChanged = (System.Windows.Controls.CheckBox)sender;
+
+            Warehouse.Product changedProduct = (Warehouse.Product)receivedChanged.DataContext;
+            DatabaseConnection.UpdateReceived(changedProduct);
         }
 
 
@@ -307,5 +323,6 @@ namespace Magazyn
             categoryList_listView.Items.Refresh();
             editCategoryName_textBox.Text = "";
         }
+
     }
 }

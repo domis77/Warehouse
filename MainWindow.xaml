@@ -21,30 +21,30 @@
                     <GridViewColumn Header="Receiver" DisplayMemberBinding="{Binding receiver.receiver}" Width="140"/>
                     <GridViewColumn Header="Received" Width="62">
                         <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding received}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding received}" Click="received_change"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Receiver limit" DisplayMemberBinding="{Binding receiverLimit}" Width="205"/>
 
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Label x:Name="name_label" Content="Name" HorizontalAlignment="Left" Height="37" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
-        <TextBox x:Name="name_textBox" HorizontalAlignment="Left" Height="37" Margin="165,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
+        <Label x:Name="name_label" Content="Name" HorizontalAlignment="Left" Height="37" Margin="10,18,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
+        <TextBox x:Name="name_textBox" HorizontalAlignment="Left" Height="37" Margin="165,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
 
-        <Label x:Name="description_label" Content="Description" HorizontalAlignment="Left" Height="90" Margin="10,71,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
-        <TextBox x:Name="description_textBox" HorizontalAlignment="Left" Height="90" Margin="165,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
+        <Label x:Name="description_label" Content="Description" HorizontalAlignment="Left" Height="90" Margin="10,79,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
+        <TextBox x:Name="description_textBox" HorizontalAlignment="Left" Height="90" Margin="165,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
 
-        <Label x:Name="price_label" Content="Price" HorizontalAlignment="Left" Height="37" Margin="10,180,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
-        <TextBox x:Name="price_textBox" HorizontalAlignment="Left" Height="37" Margin="165,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
+        <Label x:Name="price_label" Content="Price" HorizontalAlignment="Left" Height="37" Margin="10,188,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
+        <TextBox x:Name="price_textBox" HorizontalAlignment="Left" Height="37" Margin="165,188,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
 
 
-        <Label x:Name="reciveLimit_label" Content="Receive limit" HorizontalAlignment="Left" Height="36" Margin="10,226,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
-        <TextBox x:Name="reciveLimit_textBox" HorizontalAlignment="Left" Height="36" Margin="165,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
-        <Label x:Name="days_label" Content="Days" HorizontalAlignment="Left" Height="26" Margin="296,237,0,0" VerticalAlignment="Top" Width="63" FontSize="18" FontFamily="Myriad Pro" VerticalContentAlignment="Bottom"/>
+        <Label x:Name="reciveLimit_label" Content="Receive limit" HorizontalAlignment="Left" Height="36" Margin="10,234,0,0" VerticalAlignment="Top" Width="150" FontFamily="Tekton Pro" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFDCDBDB"/>
+        <TextBox x:Name="reciveLimit_textBox" HorizontalAlignment="Left" Height="36" Margin="165,234,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" BorderBrush="Black"/>
+        <Label x:Name="days_label" Content="Days" HorizontalAlignment="Left" Height="26" Margin="296,245,0,0" VerticalAlignment="Top" Width="63" FontSize="18" FontFamily="Myriad Pro" VerticalContentAlignment="Bottom"/>
 
 
 
@@ -54,7 +54,7 @@
         <Button x:Name="addProduct_button" Content="Add Product" HorizontalAlignment="Left" Height="82" Margin="380,180,0,0" VerticalAlignment="Top" Width="190" FontFamily="Perpetua Titling MT" FontSize="14" Background="#FFB8B8B8" FontWeight="Bold" Click="addProduct_button_Click" Focusable="False" Foreground="#FF186C10"/>
 
 
-        <Label x:Name="reciverList_label" Content="Recivers" HorizontalAlignment="Left" Height="27" Margin="603,13,0,0" VerticalAlignment="Top" Width="379" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontFamily="Tekton Pro" Background="#FFC5C5C5" BorderBrush="Black"/>
+        <Label x:Name="reciverList_label" Content="Receivers" HorizontalAlignment="Left" Height="27" Margin="603,13,0,0" VerticalAlignment="Top" Width="379" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontFamily="Tekton Pro" Background="#FFC5C5C5" BorderBrush="Black"/>
         <ListView x:Name="receiverList_listView" HorizontalAlignment="Left" Height="116" Margin="601,45,0,0" VerticalAlignment="Top" Width="203" BorderBrush="Black">
             <ListView.View>
                 <GridView>
